@@ -8,11 +8,14 @@ services:
       - 53:53/udp
     command: dnsmasq --no-daemon --log-queries
 
-    #  durak:
-    #build: durak
-    #tty: true
-    #ports:
-    #  - 10770:10770
-    #command: python server.py 0.0.0.0 10770
-    #volumes:
-    #  - ./durak:/usr/src/app
+  durak:
+    build: durak
+    tty: true
+    ports:
+      - 10770:10770
+
+  static_server:
+    build: static_server
+    tty: true
+    ports:
+      - 80:80
