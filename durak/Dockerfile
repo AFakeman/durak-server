@@ -4,4 +4,4 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-ENTRYPOINT python3 mitmserver.py 148.251.13.130 10770 0.0.0.0 10770
+ENTRYPOINT python3 start.py mitm 0.0.0.0 10770 148.251.13.130 10770

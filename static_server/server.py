@@ -28,7 +28,11 @@ class ProxyHTTPRequestHandler(BaseHTTPRequestHandler):
         self.end_headers()
         print(path)
         local_path = os.path.join('static', path)
-        if os.path.exists(local_path):
+        if os.path.isdir(local_path):
+            print("{} is a directory, returning 404...".format(local_path))
+            self.send_response(404)
+            self.end_headers()
+        elif os.path.exists(local_path):
             print("Using local file...")
             with open(local_path, 'rb') as f:
                 copyfileobj(f, self.wfile)
